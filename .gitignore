@@ -1,4 +1,4 @@
 *.pyc
 .conda_environment
-data
+data/test_ct_image&labels
 SIFA-model
