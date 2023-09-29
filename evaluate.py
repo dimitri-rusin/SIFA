@@ -11,9 +11,9 @@ from stats_func import *
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
-CHECKPOINT_PATH = '' # model path
-BASE_FID = '' # folder path of test files
-TESTFILE_FID = '' # path of the .txt file storing the test filenames
+CHECKPOINT_PATH = 'SIFA-model/sifa-cardiac-mr2ct' # model path
+BASE_FID = '.' # folder path of test files
+TESTFILE_FID = 'data/datalist/validation_ct.txt' # path of the .txt file storing the test filenames
 TEST_MODALITY = 'CT'
 USE_newstat = True
 KEEP_RATE = 1.0

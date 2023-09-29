@@ -1,3 +1,4 @@
 *.pyc
 .conda_environment
 data
+SIFA-model
