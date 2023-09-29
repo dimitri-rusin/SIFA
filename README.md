@@ -4,10 +4,17 @@ Here's a guide how to evaluate the provided SIFA model, which was trained on MRI
 
 Follow along!
 
+## Step 0/5:
+
+Install [Anaconda](https://www.anaconda.com/download).
+
 ## Step 1/5: Install the Anaconda environment
 
 Run
 ```sh
+git clone git@github.com:dimitri-rusin/SIFA.git
+cd SIFA/
+
 conda activate base
 rm -rf ./.conda_environment
 conda env create --prefix ./.conda_environment --file conda.yaml
@@ -15,7 +22,7 @@ conda activate ./.conda_environment
 ```
 
 ## Step 2/5: Download the testing data
-Go to [Google Drive](https://drive.google.com/file/d/1SJM3RluT0wbR9ud_kZtZvCY0dR9tGq5V/view) and download the `.zip` archive. Extract the archive into the folder
+Go to [Google Drive](https://drive.google.com/file/d/1SJM3RluT0wbR9ud_kZtZvCY0dR9tGq5V/view) and download the `.zip` archive. This might take 1 minute. Extract the archive into the folder
 ```sh
 data/test_ct_image&labels/
 ```
@@ -32,12 +39,13 @@ data/test_ct_image&labels/image_ct_1019.nii.gz
 ```
 
 ## Step 3/5: Download the model weights
-Also, go to [Dropbox](https://www.dropbox.com/sh/787kmmuhvh3e3yb/AAC4qxBJTWwQ1UMN5psrN96ja?dl=0) and download the following files:
+Also, go to [Dropbox](https://www.dropbox.com/sh/787kmmuhvh3e3yb/AAC4qxBJTWwQ1UMN5psrN96ja?dl=0) and scroll to the bottom. Download the following files:
 ```sh
 sifa-cardiac-mr2ct.data-00000-of-00001
 sifa-cardiac-mr2ct.index
 sifa-cardiac-mr2ct.meta
 ```
+This might take 2 minutes.
 
 Place these three files into the local directory `SIFA-model`.
 
