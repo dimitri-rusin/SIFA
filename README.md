@@ -1,3 +1,82 @@
+# How to get it working
+
+Here's a guide how to evaluate the provided SIFA model, which was trained on MRI images and adapted to the domain of CT images. We test how well the adapted model performs on provided CT images.
+
+Follow along!
+
+## Step 1/5: Install the Anaconda environment
+
+Run
+```sh
+conda activate base
+rm -rf ./.conda_environment
+conda env create --prefix ./.conda_environment --file conda.yaml
+conda activate ./.conda_environment
+```
+
+## Step 2/5: Download the testing data
+Go to [Google Drive](https://drive.google.com/file/d/1SJM3RluT0wbR9ud_kZtZvCY0dR9tGq5V/view) and download the `.zip` archive. Extract the archive into the folder
+```sh
+data/test_ct_image&labels/
+```
+This will yield the following 8 files:
+```sh
+data/test_ct_image&labels/gth_ct_1003.nii.gz
+data/test_ct_image&labels/gth_ct_1008.nii.gz
+data/test_ct_image&labels/gth_ct_1014.nii.gz
+data/test_ct_image&labels/gth_ct_1019.nii.gz
+data/test_ct_image&labels/image_ct_1003.nii.gz
+data/test_ct_image&labels/image_ct_1008.nii.gz
+data/test_ct_image&labels/image_ct_1014.nii.gz
+data/test_ct_image&labels/image_ct_1019.nii.gz
+```
+
+## Step 3/5: Download the model weights
+Also, go to [Dropbox](https://www.dropbox.com/sh/787kmmuhvh3e3yb/AAC4qxBJTWwQ1UMN5psrN96ja?dl=0) and download the following files:
+```sh
+sifa-cardiac-mr2ct.data-00000-of-00001
+sifa-cardiac-mr2ct.index
+sifa-cardiac-mr2ct.meta
+```
+
+Place these three files into the local directory `SIFA-model`.
+
+## Step 4/5: Prepare the testing files
+
+Run
+```sh
+conda activate ./.conda_environment
+python utils/savenpz.py
+```
+This will write 4 files to `data/test_ct_image&labels`.
+
+## Step 5/5: Run the evaluation
+
+Run
+```sh
+conda activate ./.conda_environment
+python evaluate.py
+```
+
+
+
+
+---
+---
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Unsupervised Bidirectional Cross-Modality Adaptation via Deeply Synergistic Image and Feature Alignment for Medical Image Segmentation
 
 Tensorflow implementation of our unsupervised cross-modality domain adaptation framework. <br/>
