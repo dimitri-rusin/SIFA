@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Stop execution at first anomaly: fail fast.
+set -e
+
+docker run -it -v $(pwd):/app adaptation:latest

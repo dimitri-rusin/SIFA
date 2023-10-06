@@ -4,24 +4,7 @@ Here's a guide how to evaluate the provided SIFA model, which was trained on MRI
 
 Follow along!
 
-## Step 0/5:
-
-Install [Anaconda](https://www.anaconda.com/download).
-
-## Step 1/5: Install the Anaconda environment
-
-Run
-```sh
-git clone git@github.com:dimitri-rusin/SIFA.git
-cd SIFA/
-
-conda activate base
-rm -rf ./.conda_environment
-conda env create --prefix ./.conda_environment --file conda.yaml
-conda activate ./.conda_environment
-```
-
-## Step 2/5: Download the testing data
+## Step 1/4: Download the testing data
 Go to [Google Drive](https://drive.google.com/file/d/1SJM3RluT0wbR9ud_kZtZvCY0dR9tGq5V/view) and download the `.zip` archive. This might take 1 minute. Extract the archive into the folder
 ```sh
 data/test_ct_image&labels/
@@ -38,7 +21,7 @@ data/test_ct_image&labels/image_ct_1014.nii.gz
 data/test_ct_image&labels/image_ct_1019.nii.gz
 ```
 
-## Step 3/5: Download the model weights
+## Step 2/4: Download the model weights
 Also, go to [Dropbox](https://www.dropbox.com/sh/787kmmuhvh3e3yb/AAC4qxBJTWwQ1UMN5psrN96ja?dl=0) and scroll to the bottom. Download the following files:
 ```sh
 sifa-cardiac-mr2ct.data-00000-of-00001
@@ -49,40 +32,41 @@ This might take 2 minutes.
 
 Place these three files into the local directory `SIFA-model`.
 
-## Step 4/5: Prepare the testing files
+## Step 3/4: Build a Docker image.
 
 Run
 ```sh
-conda activate ./.conda_environment
-python utils/savenpz.py
+./INSTALL
 ```
-This will write 4 files to `data/test_ct_image&labels`.
 
-## Step 5/5: Run the evaluation
+This will create a new Docker image in your local Docker installation.
+
+## Step 4/4: Run the Docker image.
 
 Run
 ```sh
-conda activate ./.conda_environment
-python evaluate.py
+./RUN
+```
+The command might not stop for about 20 minutes. You might need to be patient. It will write 4 files to `data/test_ct_image&labels`. Eventually, you might get an output like the following:
+```sh
+Dice:
+AA :78.3(3.0)
+LAC:77.5(5.3)
+LVC:73.1(8.6)
+Myo:61.2(7.9)
+Mean:72.5
+ASSD:
+AA :9.3(1.6)
+LAC:8.7(3.7)
+LVC:7.0(2.4)
+Myo:6.9(2.1)
+Mean:8.0
 ```
 
-
-
+<br>
+<br>
 
 ---
----
----
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## Unsupervised Bidirectional Cross-Modality Adaptation via Deeply Synergistic Image and Feature Alignment for Medical Image Segmentation
